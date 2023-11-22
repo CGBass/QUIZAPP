@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Quiz App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+	  background: url('IMG_20231010_125823.jpg')center/cover no-repeat fixed;
+    }
+
+    #quiz-container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 50px;
+      border: 1px solid #ccc;
+      border-radius: 40px;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+	  background-color: rgba(255, 255, 255, 0.9);
+	  ); 
+    }
+
+    .question {
+      margin-bottom: 40px;
+    }
+
+    .options {
+      list-style-type: none;
+      padding: 2;
+    }
+
+    .option {
+      margin-bottom: 20px;
+    }
+
+    #result {
+      margin-top: 50px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div id="quiz-container">
+<h1>Quiz App</h1>
+  <div class="question" id="question1">
+    <p>1. What does HTML stand for ?</p>
+    <ul class="options">
+      <li class="option"><input type="radio" name="q1" value="Hyper Text Markup Language"> Hyper Text Markup Language</li>
+      <li class="option"><input type="radio" name="q1" value="Highly Technical Markup Language"> Highly Technical Markup Language</li>
+      <li class="option"><input type="radio" name="q1" value="Hyperlink and Text Markup Language"> Hyperlink and Text Markup Language</li>
+    </ul>
+  </div>
+
+  <div class="question" id="question2">
+    <p>2. What does CSS stand for ?</p>
+    <ul class="options">
+      <li class="option"><input type="radio" name="q2" value="Cascading Style Sheet"> Cascading Style Sheet</li>
+      <li class="option"><input type="radio" name="q2" value="Computer Style Sheet"> Computer Style Sheet</li>
+      <li class="option"><input type="radio" name="q2" value="Colorful Style Sheet"> Colorful Style Sheet</li>
+    </ul>
+  </div>
+
+  <div class="question" id="question3">
+    <p>3. Which programming language is often used for web development ?</p>
+    <ul class="options">
+      <li class="option"><input type="radio" name="q3" value="Java"> Java</li>
+      <li class="option"><input type="radio" name="q3" value="Python"> Python</li>
+      <li class="option"><input type="radio" name="q3" value="JavaScript"> JavaScript</li>
+    </ul>
+  </div>
+
+  <div class="question" id="question4">
+    <p>4. What is the purpose of the CSS property "z-index" ?</p>
+    <ul class="options">
+      <li class="option"><input type="radio" name="q4" value="Controlling the order of elements in the stacking context"> Controlling the order of elements in the stacking </li>
+      <li class="option"><input type="radio" name="q4" value="Setting the background color"> Setting the background color</li>
+      <li class="option"><input type="radio" name="q4" value="Defining font size"> Defining font size</li>
+    </ul>
+  </div>
+
+  <button onclick="submitQuiz()">Submit</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function submitQuiz() {
+    const answers = {
+      q1: document.querySelector('input[name="q1"]:checked').value,
+      q2: document.querySelector('input[name="q2"]:checked').value,
+      q3: document.querySelector('input[name="q3"]:checked').value,
+      q4: document.querySelector('input[name="q4"]:checked').value,
+    };
+
+    const correctAnswers = {
+      q1: 'Hyper Text Markup Language',
+      q2: 'Cascading Style Sheet',
+      q3: 'JavaScript',
+      q4: 'Controlling the order of elements in the stacking context',
+    };
+
+    let score = 0;
+
+    for (const question in answers) {
+      if (answers[question] === correctAnswers[question]) {
+        score++;
+      }
+    }
+
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `Your score: ${score} out of ${Object.keys(answers).length}`;
+
+  }
+</script>
+</body>
+</html>
